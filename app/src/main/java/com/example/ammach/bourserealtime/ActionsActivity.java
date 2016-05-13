@@ -100,11 +100,11 @@ public class ActionsActivity extends AppCompatActivity {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
 
-                ArrayList<Action> actionsAtt= (ArrayList<Action>) msg.obj;
-                if (actionsAtt.get(0).getName().equals("action")){
+                ArrayList<Object> actionsAtt= (ArrayList<Object>) msg.obj;
+                if (actionsAtt.get(0).getClass().getSimpleName().equals("Action")){
                     actions=new ArrayList<Action>();
                     for (int i = 0; i <actionsAtt.size() ; i++) {
-                        actions.add(actionsAtt.get(i));
+                        actions.add((Action) actionsAtt.get(i));
                     }
                 }
                 adapter.setActions(actions);

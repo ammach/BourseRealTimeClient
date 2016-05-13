@@ -11,8 +11,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import classes.Action;
-
 /**
  * Created by ammach on 5/4/2016.
  */
@@ -42,7 +40,7 @@ public class ServeurAction extends Thread{
                 sock=reception.accept();
                 System.out.println("Le serveur a accepté la connexion avec "+sock.getInetAddress());
                 ObjectInputStream objectInputStream =new ObjectInputStream(sock.getInputStream());
-                ArrayList<Action> actions= (ArrayList<Action>) objectInputStream.readObject();
+                ArrayList<Object> actions= (ArrayList<Object>) objectInputStream.readObject();
                 Message msg=Message.obtain();
                 msg.obj=actions;
                 ActionsActivity.handler.sendMessage(msg);
