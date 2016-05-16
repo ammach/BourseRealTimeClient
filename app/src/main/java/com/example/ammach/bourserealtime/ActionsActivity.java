@@ -89,7 +89,7 @@ public class ActionsActivity extends AppCompatActivity {
         new ServeurAction();
         actions=new ArrayList<>();
         actions.add(new Action("attente en cours.","attente en cours","attente en cours","attente en cours","attente en cours"));
-        actions.add(new Action("attente en cours","attente en cours","attente en cours","attente en cours","attente en cours"));
+        actions.add(new Action("attente en cours.","attente en cours","attente en cours","attente en cours","attente en cours"));
         actions.add(new Action("attente en cours","attente en cours","attente en cours","attente en cours","attente en cours"));
         actions.add(new Action("attente en cours","attente en cours","attente en cours","attente en cours","attente en cours"));
 
