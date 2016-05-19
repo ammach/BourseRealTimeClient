@@ -40,6 +40,7 @@ public class ServeurConnecte extends Thread
                 System.out.println("Le serveur a accepté la connexion avec "+sock.getInetAddress());
                 DataInputStream dataInputStream = new DataInputStream(sock.getInputStream());
                 text = dataInputStream.readUTF();
+                //envoi du msg au handler de connexion
                 Message msg=Message.obtain();
                 msg.obj=text;
                 MainActivity.handler.sendMessage(msg);

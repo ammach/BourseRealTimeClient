@@ -41,6 +41,7 @@ public class ServeurAction extends Thread{
                 System.out.println("Le serveur a accepté la connexion avec "+sock.getInetAddress());
                 ObjectInputStream objectInputStream =new ObjectInputStream(sock.getInputStream());
                 ArrayList<Object> actions= (ArrayList<Object>) objectInputStream.readObject();
+                //envoi du msg au handler des actions
                 Message msg=Message.obtain();
                 msg.obj=actions;
                 ActionsActivity.handler.sendMessage(msg);

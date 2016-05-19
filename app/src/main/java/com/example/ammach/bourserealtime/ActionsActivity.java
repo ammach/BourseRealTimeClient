@@ -18,6 +18,10 @@ import helpers.ServeurAction;
 
 public class ActionsActivity extends AppCompatActivity {
 
+
+    ///////////////////////////////////////////////////////////////////////////
+    // adapter du listview
+    ///////////////////////////////////////////////////////////////////////////
     class MyAdapter extends BaseAdapter {
 
         ArrayList<Action> actions;
@@ -86,6 +90,8 @@ public class ActionsActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Liste des Actions");
 
+
+        //ecoute de reponse du serveur liste des actions
         new ServeurAction();
         actions=new ArrayList<>();
         actions.add(new Action("attente en cours.","attente en cours","attente en cours","attente en cours","attente en cours"));
@@ -95,6 +101,8 @@ public class ActionsActivity extends AppCompatActivity {
 
         listview=(ListView) findViewById(R.id.listview_actions);
         adapter=new MyAdapter(actions);
+
+        //attente de la liste des actions pour l'afficher
         handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {

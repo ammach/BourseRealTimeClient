@@ -16,6 +16,10 @@ import helpers.ServeurConnecte;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    ///////////////////////////////////////////////////////////////////////////
+    // envoi d'objet client au serveur
+    ///////////////////////////////////////////////////////////////////////////
     class Task extends AsyncTask<String,Void,Void> {
 
         @Override
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             String pass =params[1];
             Client c=new Client(name,pass);
             ClientConnecte client=new ClientConnecte();
-            client.connexion("192.168.1.2", 40000);
+            client.connexion("192.168.3.151", 30000);
             client.envoiObject(c);
             return null;
         }
@@ -54,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         editPass= (EditText) findViewById(R.id.editPass);
     }
 
+
+    ///////////////////////////////////////////////////////////////////////////
+    // connecter
+    ///////////////////////////////////////////////////////////////////////////
     public void connecter(View view) {
         final String name=editName.getText().toString();
         final String pass=editPass.getText().toString();
@@ -62,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             new Task().execute(name,pass);
+
+            //ecoute de reponse du serveur
             new ServeurConnecte();
+            //attente du reponse pour l'afficher
             handler=new Handler(){
                 @Override
                 public void handleMessage(Message msg) {

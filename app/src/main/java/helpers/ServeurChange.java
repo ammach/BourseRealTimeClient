@@ -11,8 +11,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import classes.Change;
-
 /**
  * Created by ammach on 5/11/2016.
  */
@@ -43,6 +41,7 @@ public class ServeurChange extends Thread
                 System.out.println("Le serveur a accepté la connexion avec "+sock.getInetAddress());
                 ObjectInputStream objectInputStream =new ObjectInputStream(sock.getInputStream());
                 ArrayList<Object> changes= (ArrayList<Object>) objectInputStream.readObject();
+                //envoi du msg au handler des changes
                 Message msg=Message.obtain();
                 msg.obj=changes;
                 UserDetailActivity.handler.sendMessage(msg);
